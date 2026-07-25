@@ -316,6 +316,7 @@ function PastorDashboard() {
             <div key={r.id} className="bw-pastor-card">
               <p className="bw-pastor-meta">{new Date(r.created_at).toLocaleDateString()} — {new Date(r.created_at).toLocaleTimeString()}</p>
               <p><strong>Name:</strong> {nameForUser(r.user_id)}</p>
+              {r.chapter_studied && <p><strong>📖 Chapter studied:</strong> {r.chapter_studied}</p>}
               <p><strong>What they understood:</strong> {r.what_understood}</p>
               <p><strong>Doubts:</strong> {r.doubts || "None"}</p>
               <p><strong>What God spoke:</strong> {r.what_god_spoke}</p>
@@ -488,7 +489,7 @@ function ReflectionFormScreen({ user, onSubmit, onBack }) {
           messages: [
             {
               role: "system",
-              content: "You are a warm, encouraging Bible study guide. When a student shares their reflection after a Bible study session, respond with pastoral care — affirm what they understood, gently address their doubts with scripture, and encourage what God spoke to them. Keep it personal, warm, and under 200 words."
+              content: "You are a warm, encouraging Bible study companion for Bible Well. Your message will be shown to the student as an AI-generated response, so naturally include a brief, gentle note early on that this is an AI reflection, not a person. Speak personally, like a caring friend. Example opening tone: \"Dear friend, I'm so glad you shared your reflection...\"\n\nHandle each part of their reflection differently:\n- Affirm and encourage what they understood.\n- Affirm and encourage what God spoke to them.\n- For their doubts or questions: do NOT interpret, resolve, or explain the theology yourself, even if you know the answer. Instead, acknowledge that it is a genuine and worthwhile question, and let them know a pastor or leader from Bible Well will personally follow up with them on it soon.\n\nKeep the entire response under 180 words, warm and encouraging throughout, and avoid sounding clinical or repetitive."
             },
             {
               role: "user",
