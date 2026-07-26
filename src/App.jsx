@@ -2,6 +2,13 @@ import { useState, useEffect } from "react"
 import { supabase } from './supabase'
 import './App.css'
 
+// Drop your chosen photos (from Unsplash/Pexels, free license) into /public/images/
+// and update these paths if you name the files differently.
+const LOGIN_PHOTO_URL = "/images/login-hero.jpg"
+const DOOR_BIBLE_PHOTO_URL = "/images/door-bible.jpg"
+const DOOR_STUDY_PHOTO_URL = "/images/door-study.jpg"
+const DOOR_SESSIONS_PHOTO_URL = "/images/door-sessions.jpg"
+
 const BOOKS = {
   "genesis": 1, "exodus": 2, "leviticus": 3, "numbers": 4,
   "deuteronomy": 5, "joshua": 6, "judges": 7, "ruth": 8,
@@ -234,7 +241,10 @@ function GoogleLoginScreen() {
     if (error) setError("Something went wrong. Please try again.")
   }
   return (
-    <div className="bw-login">
+    <div
+      className="bw-login bw-has-photo"
+      style={{ "--bw-photo-url": `url(${LOGIN_PHOTO_URL})` }}
+    >
       <h1>Bible Well</h1>
       <p className="bw-tagline">Come thirsty. Leave transformed.</p>
       {error && <p className="bw-login-error">{error}</p>}
@@ -343,20 +353,23 @@ function DoorsScreen({ onBible, onStudy, onSessions, onLogout }) {
       <h1>Bible Well</h1>
       <p className="bw-subtitle">What are you looking for today?</p>
       <div className="bw-doors">
-        <div className="bw-door" onClick={onBible}>
-          <div className="bw-door-icon">📖</div>
-          <h3>Read the Bible</h3>
-          <p>Open the Word, any book, any chapter.</p>
+        <div className="bw-door" style={{ backgroundImage: `url(${DOOR_BIBLE_PHOTO_URL})` }} onClick={onBible}>
+          <div className="bw-door-content">
+            <h3>Read the Bible</h3>
+            <p>Open the Word, any book, any chapter.</p>
+          </div>
         </div>
-        <div className="bw-door" onClick={onStudy}>
-          <div className="bw-door-icon">🙏</div>
-          <h3>Bible Study</h3>
-          <p>Walk through Scripture with someone, at your pace.</p>
+        <div className="bw-door" style={{ backgroundImage: `url(${DOOR_STUDY_PHOTO_URL})` }} onClick={onStudy}>
+          <div className="bw-door-content">
+            <h3>Bible Study</h3>
+            <p>Walk through Scripture with someone, at your pace.</p>
+          </div>
         </div>
-        <div className="bw-door" onClick={onSessions}>
-          <div className="bw-door-icon">📋</div>
-          <h3>My Sessions</h3>
-          <p>See your request status and past reflections.</p>
+        <div className="bw-door" style={{ backgroundImage: `url(${DOOR_SESSIONS_PHOTO_URL})` }} onClick={onSessions}>
+          <div className="bw-door-content">
+            <h3>My Sessions</h3>
+            <p>See your request status and past reflections.</p>
+          </div>
         </div>
       </div>
     </div>
