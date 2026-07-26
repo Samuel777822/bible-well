@@ -212,7 +212,7 @@ function BibleScreen({ onBack }) {
   )
 
   if (view === "reading") return (
-    <div className="bw-screen">
+    <div className="bw-screen bw-screen-plain">
       <button className="bw-back" onClick={() => setView("chapters")}>← Back</button>
       <h1 className="bw-title">{BOOK_NAMES[selectedBook - 1]} {selectedChapter}</h1>
       <p className="bw-reading-version">{version}</p>
