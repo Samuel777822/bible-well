@@ -158,6 +158,7 @@ function BibleScreen({ onBack }) {
 
   if (view === "home") return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={onBack}>← Back</button>
       <h1 className="bw-title">📖 Bible</h1>
       <div className="bw-versions">
@@ -176,11 +177,13 @@ function BibleScreen({ onBack }) {
       <hr className="bw-ripple" />
       <h2>Read the Bible</h2>
       <button className="bw-btn-primary" onClick={() => setView("books")}>Choose a Book →</button>
+      </div>
     </div>
   )
 
   if (view === "books") return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={() => setView("home")}>← Back</button>
       <h1 className="bw-title">Choose a Book</h1>
       <h3>Old Testament</h3>
@@ -195,11 +198,13 @@ function BibleScreen({ onBack }) {
           <button key={index + 39} className="bw-full-btn" onClick={() => handleBookSelect(index + 40)}>{name}</button>
         ))}
       </div>
+      </div>
     </div>
   )
 
   if (view === "chapters") return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={() => setView("books")}>← Back</button>
       <h1 className="bw-title">{BOOK_NAMES[selectedBook - 1]}</h1>
       <p className="bw-subtitle">Choose a chapter:</p>
@@ -208,11 +213,13 @@ function BibleScreen({ onBack }) {
           <button key={ch} onClick={() => handleChapterSelect(ch)}>{ch}</button>
         ))}
       </div>
+      </div>
     </div>
   )
 
   if (view === "reading") return (
     <div className="bw-screen bw-screen-plain">
+      <div className="bw-inner">
       <button className="bw-back" onClick={() => setView("chapters")}>← Back</button>
       <h1 className="bw-title">{BOOK_NAMES[selectedBook - 1]} {selectedChapter}</h1>
       <p className="bw-reading-version">{version}</p>
@@ -226,6 +233,7 @@ function BibleScreen({ onBack }) {
       <div className="bw-chapter-nav">
         <button onClick={handlePrevChapter} disabled={selectedChapter === 1}>← Previous</button>
         <button onClick={handleNextChapter} disabled={selectedChapter === BOOK_CHAPTERS[selectedBook]}>Next →</button>
+      </div>
       </div>
     </div>
   )
@@ -288,6 +296,7 @@ function PastorDashboard() {
 
   return (
     <div className="bw-screen-wide">
+      <div className="bw-inner-wide">
       <div className="bw-dash-header">
         <h1 className="bw-title">Pastor Dashboard</h1>
         <button className="bw-btn-secondary" onClick={handleLogout}>Logout</button>
@@ -340,6 +349,7 @@ function PastorDashboard() {
           ))}
         </div>
       )}
+      </div>
     </div>
   )
 }
@@ -347,6 +357,7 @@ function PastorDashboard() {
 function DoorsScreen({ onBible, onStudy, onSessions, onLogout }) {
   return (
     <div className="bw-doors-wrap">
+      <div className="bw-inner">
       <div className="bw-logout-row">
         <button className="bw-btn-secondary" onClick={onLogout}>Logout</button>
       </div>
@@ -372,6 +383,7 @@ function DoorsScreen({ onBible, onStudy, onSessions, onLogout }) {
           </div>
         </div>
       </div>
+      </div>
     </div>
   )
 }
@@ -379,6 +391,7 @@ function DoorsScreen({ onBible, onStudy, onSessions, onLogout }) {
 function StudyIntroScreen({ onReady, onBack }) {
   return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={onBack}>← Back</button>
       <div className="bw-intro-card">
         <h1>That longing you feel right now is not an accident.</h1>
@@ -389,6 +402,7 @@ function StudyIntroScreen({ onReady, onBack }) {
         <p>He is not disappointed. He is not surprised. He is waiting.</p>
         <p>Someone will walk through the Word with you, personally, at your own pace.</p>
         <button className="bw-btn-primary" onClick={onReady}>I'm Ready →</button>
+      </div>
       </div>
     </div>
   )
@@ -420,6 +434,7 @@ function RequestFormScreen({ onSubmit, onBack }) {
 
   return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={onBack}>← Back</button>
       <h1 className="bw-title">Tell us about yourself</h1>
       <p className="bw-subtitle">This helps us connect you with the right Bible study.</p>
@@ -462,6 +477,7 @@ function RequestFormScreen({ onSubmit, onBack }) {
       {error && <p className="bw-error">{error}</p>}
       <div className="bw-submit-row">
         <button className="bw-btn-primary" onClick={handleSubmit}>Submit Request</button>
+      </div>
       </div>
     </div>
   )
@@ -535,6 +551,7 @@ function ReflectionFormScreen({ user, onSubmit, onBack }) {
 
   return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={onBack}>← Back</button>
       <h1 className="bw-title">Session Reflection</h1>
       <p className="bw-subtitle">Take a moment to reflect on today's Bible study.</p>
@@ -560,6 +577,7 @@ function ReflectionFormScreen({ user, onSubmit, onBack }) {
       {loading && <p className="bw-loading-note">✨ Getting your response...</p>}
       <div className="bw-submit-row">
         <button className="bw-btn-primary" onClick={handleSubmit} disabled={loading}>{loading ? "Submitting..." : "Submit Reflection"}</button>
+      </div>
       </div>
     </div>
   )
@@ -606,6 +624,7 @@ function MySessionsScreen({ user, onBack }) {
 
   return (
     <div className="bw-screen">
+      <div className="bw-inner">
       <button className="bw-back" onClick={onBack}>← Back</button>
       <h1 className="bw-title">My Sessions</h1>
 
@@ -647,6 +666,7 @@ function MySessionsScreen({ user, onBack }) {
           ))}
         </div>
       )}
+      </div>
     </div>
   )
 }

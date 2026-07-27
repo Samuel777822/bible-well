@@ -69,6 +69,7 @@ button {
 
 .bw-screen {
   min-height: 100vh;
+  width: 100%;
   background:
     linear-gradient(rgba(250,248,240,0.55), rgba(250,248,240,0.75)),
     url('/images/doors-bg.jpg');
@@ -76,8 +77,6 @@ button {
   background-position: center;
   background-attachment: fixed;
   padding: 28px 20px 60px;
-  max-width: 640px;
-  margin: 0 auto;
 }
 
 /* used only for the actual Scripture reading view — flat and distraction-free */
@@ -87,8 +86,17 @@ button {
 
 .bw-screen-wide {
   min-height: 100vh;
+  width: 100%;
   background: var(--cream);
   padding: 28px 20px 60px;
+}
+
+/* keeps content readable on wide/desktop screens instead of stretching edge to edge */
+.bw-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.bw-inner-wide {
   max-width: 880px;
   margin: 0 auto;
 }
@@ -272,6 +280,7 @@ button {
 
 .bw-doors-wrap {
   min-height: 100vh;
+  width: 100%;
   background:
     linear-gradient(rgba(250,248,240,0.55), rgba(250,248,240,0.75)),
     url('/images/doors-bg.jpg');
@@ -279,8 +288,6 @@ button {
   background-position: center;
   background-attachment: fixed;
   padding: 48px 20px 60px;
-  max-width: 640px;
-  margin: 0 auto;
   text-align: center;
 }
 .bw-doors-wrap h1 { font-size: 34px; }
